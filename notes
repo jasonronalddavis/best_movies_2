@@ -24,3 +24,24 @@ user types
 info of data structure
 
 ruby guide/make a gem using bundler
+
+
+jasondavis@Jasons-iMac Best_movies % git remote set-url git@github.com:jasonronalddavis/best_movies_2.git
+
+jasondavis@Jasons-iMac Best_movies % git remote set-url origin git@github.com:jasonronalddavis/best_movies_2.git
+
+jasondavis@Jasons-iMac Best_movies % git remote -v                                                          
+
+git add .
+
+jasondavis@Jasons-iMac Best_movies % git commit -m "first commit"
+
+jasondavis@Jasons-iMac Best_movies % git status   
+
+
+git push
+
+jasondavis@Jasons-iMac Best_movies % git add lib/best_movies/cli.rb
+
+
+
