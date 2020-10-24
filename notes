@@ -16,6 +16,39 @@ ls -lah
 
 #notes
 
+Movie_playlist
+
+. user should be able to select a movie from a list
+- movie should have a class 
+- selected movie should be able to display associated director, actors and genre
+- selected movie movie should hae a synopsis
+- selection should be stored in array
+. user should be able to select a director from a list of directors 
+- selection should be able to display associated movies with genre and actors by director 
+- selection should be stored in array
+. user should be able to select a genre from a list 
+- selection should be able to display associated movies with director and actors by genre
+- selection should be stored in array
+. user should be able to select from a list of actors
+- selection should be able to display associated movies with genre and director
+- selection should be stored in array
+. app should have a scraping class from rotten-tomatoes
+
+
+things to avoid: # sandwich code
+# don't stray from object responsibility
+# only scrape 1nce
+# no silgletons/no class methods
+
+
+# for each movie panel on rottentomatoes
+# get get html elents data
+# instantiate a movie based on that data 
+
+
+
+
+
 
 - A command line interface for daily deals starting with (rotten_tomatoes)
 
@@ -44,4 +77,72 @@ git push
 jasondavis@Jasons-iMac Best_movies % git add lib/best_movies/cli.rb
 
 
+WEBSCRAPE_CHECK
 
+require "nokogiri"
+require "open-uri"
+site = "https://editorial.rottentomatoes.com/guide/best-movies-of-2019/"
+
+
+page = Nokogiri::HTML(open(site))
+
+
+
+resluts = page.css(".article_movie_title")
+
+results.each do |r|
+
+  puts r.css("a").text
+end
+
+#whithin
+
+#if there are 2 classes within an html element, the speace inbetween must be replaced with a dot "." when using .css("")
+
+
+
+
+root = 
+
+url = 
+
+showpage = Nokogiri::Html(open(""))
+
+
+titles
+
+
+#make new file touch new_file.rb
+
+
+
+
+
+
+
+
+.gsub()
+
+
+
+
+require "nokogiri"
+require "open-uri"
+
+
+
+
+
+url = "https://editorial.rottentomatoes.com/guide/best-movies-of-2019/"
+
+site = Nokogiri::HTML(open(url))   
+
+site.search("div.countdown-item").each do |movie|
+ movie.search("div.info.synopsis")
+ scrape = movie.css("a")[0].attributes["href"].value
+
+ site_2 = Nokogiri::HTML(open(scrape))
+
+ puts site_2.css("#movieSynopsis").text.strip
+
+end

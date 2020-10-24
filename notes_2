@@ -1,0 +1,17 @@
+require "nokogiri"
+require "open-uri"
+site = "https://editorial.rottentomatoes.com/guide/best-movies-of-2019/"
+
+
+page = Nokogiri::HTML(open(site))
+
+
+
+movies = page.css(".article_movie_title")
+
+
+movies.each do |r|
+
+puts r.css("a").text[--=
+  
+end774

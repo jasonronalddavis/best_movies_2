@@ -1,12 +1,42 @@
-require "pry"
+
 #git add
 #git add . add all files at one time, incrementaly [ush ]
 
 class BestMovies::CLI
 
 
+
+    #bash color codes
+@@grn= "\e[1;31m"
+@@grn= "\e[1;32m"
+@@yllw= "\e[1;33m"
+@@blu= "\e[1;34m"  
+@mag= "\e[1;35m"   
+@@cyn= "\e[1;36m"
+@@white= "\e[0m"
+
+
+
+def initialize
+   importer = BestMovies::Scraper
+   importer.scrape_movies
+end
+
+
+
+
+
+
     def call
-    puts "\nBest movies this past year\n"
+    puts "\n#{@@grn}Welcome to your movie library!#{@@white}\n"
+    #puts "Welcome to your movie library!"
+    #puts "To list all of your movies, enter 'list movies'."
+    #puts "To list all of the actors in your library, enter 'list actors'."
+    #puts "To list all of the genres in your library, enter 'list genres'."
+    #puts "To list all of the movies by a particular actor, enter 'list_actor'."
+    #puts "To list all of the movies of a particular genre, enter 'list genre'."
+    #puts "To quit, type 'exit'."
+    #puts "What would you like to do?"
     #find_movie_tile
     #all_movie_titles
     #fnd_movie
@@ -18,40 +48,60 @@ class BestMovies::CLI
     #api that does not require authentication 
     get_movies
     list_movies
-    get_user_input
+    get_user_movie
     #valid_input?(input, data)
     end
 
 
     def get_movies
-    @movies = ["the_matrix", "shrek", "district_9"]
+        
+        @movies = BestMovies::Movie.all
+    #instance variable hoists data to a higher scope to accessed outside a method within a class/instance
     end
 
 
     def list_movies
-        puts "chose a movie"
+        puts "choose a movie"
     @movies.each.with_index(1) do |movie, index| 
-        puts "#{index}. #{movie}"
+        puts "#{index}. #{movie.name}"
         end
     end
 
-   def get_user_input 
-    
-    chosen_input = gets.strip
-    binding.pry  
-  # if valid_input(chosen_input, @movies) 
-   #end
 
-    
+
+
+
+
+   def get_user_movie    
+    input = gets.strip.to_i 
+    movie = @movies[input] 
+    select_movie_for(input) if valid_input(input, @movies)
+    #binding.pry
    end  
 
-
+ 
 
 def valid_input(input, data)
+    data = @movies
+ input.to_i <= data.length && input.to_i > 0
+end
 
- input.to_1 <= data.length && input.to_i > 0
+#def list_movies_for(chosen_input)
+#ovie = @movies[chosen_input - 1]
+#puts "Listed are the best movies for 2019"
+#binding.pry
+#end
+
+
+def select_movie_for(input)
+    movie = @movies[input -1]
+    puts "ranked at ##{input.to_i} is #{movie.name}"
+    binding.pry
+    end
 end
-end
+
+
+
 
 
 
