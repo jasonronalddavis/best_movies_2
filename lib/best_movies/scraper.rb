@@ -1,6 +1,6 @@
 class BestMovies::Scraper
 
-    attr_accessor :movie, :genre, :key
+    attr_accessor :movie, :genre, :synopsis, :actor
 
 
 
