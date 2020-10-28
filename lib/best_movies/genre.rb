@@ -21,7 +21,6 @@ class BestMovies::Movie
 
 
     def self.all 
-        BestMovies::Scraper.scrape_movies
-        @@all
+        BestMovies::Scraper.all
     end
 end

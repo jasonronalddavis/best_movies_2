@@ -17,10 +17,10 @@ class BestMovies::CLI
 
 
 
-def initialize
-   importer = BestMovies::Scraper
-   importer.scrape_movies
-end
+#def initialize
+   #importer = BestMovies::Scraper
+   #importer.scrape_movies
+#end
 
 
 
@@ -60,24 +60,28 @@ end
     end
 
 
-    def list_movies
-        puts "choose a movie"
+   def list_movies
+       puts "choose a movie"
     @movies.each.with_index(1) do |movie, index| 
         puts "#{index}. #{movie.name}"
         end
+       #binding.pry
     end
 
 
-
-
-
-
-   def get_user_movie    
-    input = gets.strip.to_i 
+   def get_user_movie
+   # binding.pry
+    input = gets.strip.to_i - 1
     movie = @movies[input] 
-    select_movie_for(input) if valid_input(input, @movies)
+    BestMovies::Scraper.scrape_movie(movie)
+    puts movie.name
+    puts movie.synopsis
+    puts "Actors: #{movie.actor}."
+
+    #select_movie_for(input) if valid_input(input, @movies)
     #binding.pry
-   end  
+   end 
+
 
  
 
@@ -96,7 +100,7 @@ end
 def select_movie_for(input)
     movie = @movies[input -1]
     puts "ranked at ##{input.to_i} is #{movie.name}"
-    binding.pry
+   # binding.pry
     end
 end
 
