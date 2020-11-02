@@ -146,3 +146,12 @@ site.search("div.countdown-item").each do |movie|
  puts site_2.css("#movieSynopsis").text.strip
 
 end
+
+
+codewars 
+
+
+redux
+
+
+Rails framework built by ruby. 

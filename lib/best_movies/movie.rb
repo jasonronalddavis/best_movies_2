@@ -2,19 +2,14 @@ class BestMovies::Movie
 
     @@all = []
 
-    attr_accessor :name, :genre, :synopsis, :actor, :title, :link
+    attr_accessor :name, :genre, :synopsis, :link, :actors
      
     attr_reader :director
 
-    def initialize(name)
+    def initialize
         @name = name
         @actors = []
         save
-    end
-
-
-    def add_actor(actor)
-        @actor << actor
     end
 
 

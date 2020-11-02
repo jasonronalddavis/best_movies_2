@@ -13,11 +13,11 @@ class BestMovies::Scraper
             
 
             
-           movie = BestMovies::Movie.new(name)
+           movie = BestMovies::Movie.new
            movie.link = movie_attr.css(".article_movie_title a").attribute("href").value
            #binding.pry
            movie.name = movie_attr.search("div.article_movie_title a").text 
-           movie.actor = movie_attr.search("div.cast a").text 
+           movie.actors = movie_attr.search("div.cast a").text 
 
            #@@all << self
             end   
@@ -25,11 +25,10 @@ class BestMovies::Scraper
         end
 
 
-def self.scrape_movie(movie)
-    
-
+def self.scrape_movie(movie)   
     doc = Nokogiri::HTML(open(movie.link))
     movie.synopsis = doc.css("#movieSynopsis").text.strip
+    movie.genre = doc.css("div.meta-value.genre").text.strip
    # @@all << self
 end
 

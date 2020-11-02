@@ -74,13 +74,17 @@ class BestMovies::CLI
     input = gets.strip.to_i - 1
     movie = @movies[input] 
     BestMovies::Scraper.scrape_movie(movie)
+   #if valid_input(input, @movies)
     puts movie.name
-    puts movie.synopsis
-    puts "Actors: #{movie.actor}."
+    puts "genre: #{movie.genre}."
+    puts "synopsis: #{movie.synopsis}."
+    puts "Actors: #{movie.actors}."
 
     #select_movie_for(input) if valid_input(input, @movies)
     #binding.pry
    end 
+
+
 
 
  
@@ -89,6 +93,8 @@ def valid_input(input, data)
     data = @movies
  input.to_i <= data.length && input.to_i > 0
 end
+end
+
 
 #def list_movies_for(chosen_input)
 #ovie = @movies[chosen_input - 1]
@@ -97,12 +103,12 @@ end
 #end
 
 
-def select_movie_for(input)
-    movie = @movies[input -1]
-    puts "ranked at ##{input.to_i} is #{movie.name}"
+#def select_movie_for(input)
+   # movie = @movies[input -1]
+  #  puts "ranked at ##{input.to_i} is #{movie.name}"
    # binding.pry
-    end
-end
+  #  end
+#end
 
 
 
