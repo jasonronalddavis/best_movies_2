@@ -28,7 +28,8 @@ class BestMovies::Scraper
 def self.scrape_movie(movie)   
     doc = Nokogiri::HTML(open(movie.link))
     movie.synopsis = doc.css("#movieSynopsis").text.strip
-    movie.genre = doc.css("div.meta-value.genre").text.strip
+    movie.genre = doc.css("div.meta-value.genre").text.gsub(/\s+/, " ").strip
+
    # @@all << self
 end
 

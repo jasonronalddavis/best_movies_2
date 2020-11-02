@@ -7,11 +7,11 @@ class BestMovies::CLI
 
 
     #bash color codes
-@@grn= "\e[1;31m"
+@@muted= "\e[1;31m"
 @@grn= "\e[1;32m"
 @@yllw= "\e[1;33m"
 @@blu= "\e[1;34m"  
-@mag= "\e[1;35m"   
+@@mag= "\e[1;35m"   
 @@cyn= "\e[1;36m"
 @@white= "\e[0m"
 
@@ -61,7 +61,8 @@ class BestMovies::CLI
 
 
    def list_movies
-       puts "choose a movie"
+   puts "\n#{@@mag}CHOOSE A MOVIE!#{@@white}\n"
+      # puts "choose a movie"
     @movies.each.with_index(1) do |movie, index| 
         puts "#{index}. #{movie.name}"
         end
@@ -75,10 +76,11 @@ class BestMovies::CLI
     movie = @movies[input] 
     BestMovies::Scraper.scrape_movie(movie)
    #if valid_input(input, @movies)
-    puts movie.name
+    puts "#{@@mag}#{movie.name}#{@@white}"
     puts "genre: #{movie.genre}."
     puts "synopsis: #{movie.synopsis}."
     puts "Actors: #{movie.actors}."
+    get_user_movie
 
     #select_movie_for(input) if valid_input(input, @movies)
     #binding.pry
