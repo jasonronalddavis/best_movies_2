@@ -14,6 +14,8 @@ class BestMovies::CLI
 @@mag= "\e[1;35m"   
 @@cyn= "\e[1;36m"
 @@white= "\e[0m"
+@@red= "\e[0;31m"
+@@gray= "\e[0;37m"
 
 
 
@@ -48,13 +50,13 @@ class BestMovies::CLI
     #api that does not require authentication 
     get_movies
     list_movies
-    get_user_movie
+    get_user_movie 
     #valid_input?(input, data)
     end
 
 
-    def get_movies
-        
+
+    def get_movies     
         @movies = BestMovies::Movie.all
     #instance variable hoists data to a higher scope to accessed outside a method within a class/instance
     end
@@ -71,20 +73,28 @@ class BestMovies::CLI
 
 
    def get_user_movie
+    
    # binding.pry
     input = gets.strip.to_i - 1
+    if valid_input(input, @movies)
     movie = @movies[input] 
-    BestMovies::Scraper.scrape_movie(movie)
-   #if valid_input(input, @movies)
+    BestMovies::Scraper.scrape_synopsis(movie)
+    BestMovies::Scraper.scrape_genre(movie)
     puts "#{@@mag}#{movie.name}#{@@white}"
-    puts "genre: #{movie.genre}."
-    puts "synopsis: #{movie.synopsis}."
-    puts "Actors: #{movie.actors}."
-    get_user_movie
-
-    #select_movie_for(input) if valid_input(input, @movies)
+    puts "#{@@blu}genre: #{movie.genre}#{@@white}"
+    puts "synopsis: #{movie.synopsis}"
+    puts "#{@@cyn}Actors: #{movie.actors}.#{@@white}"
+    puts "#{@@grn}PLAY TRAILER?#{movie.play_trailer}(play)#{@@white}"
+    puts "#{@@yllw}Save movie?(save)#{@@white}"
+    puts "#{@@red}exit app?(exit)#{@@white}"
+    movie.play_trailer if input == "play"
+    movie.save_to_playlist if input == "save"
+    #exit_app if input == "exit"
+    get_user_movie 
     #binding.pry
    end 
+end
+
 
 
 
@@ -93,7 +103,8 @@ class BestMovies::CLI
 
 def valid_input(input, data)
     data = @movies
- input.to_i <= data.length && input.to_i > 0
+ input.to_i <= data.length && input.to_i > 0 
+ input.to_s != "save" || input.to_s != "exit" || input.to_s != "play"
 end
 end
 
