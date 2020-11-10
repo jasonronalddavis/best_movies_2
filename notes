@@ -63,16 +63,16 @@ jasondavis@Jasons-iMac Best_movies % git remote set-url git@github.com:jasonrona
 
 jasondavis@Jasons-iMac Best_movies % git remote set-url origin git@github.com:jasonronalddavis/best_movies_2.git
 
-jasondavis@Jasons-iMac Best_movies % git remote -v                                                          
+jasondavis@Jasons-iMac Best_movies % git remote -v *                                                        
 
-git add .
+git add . *
 
-jasondavis@Jasons-iMac Best_movies % git commit -m "first commit"
+jasondavis@Jasons-iMac Best_movies % git commit -m "first commit" *
 
 jasondavis@Jasons-iMac Best_movies % git status   
 
 
-git push
+git push * 
 
 jasondavis@Jasons-iMac Best_movies % git add lib/best_movies/cli.rb
 

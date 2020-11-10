@@ -31,7 +31,6 @@ class BestMovies::CLI
 
     def call
     puts "\n#{@@grn}Welcome!\n"
-    puts "List all movies or pick a genre?...#{@@white}"
     #puts "Welcome to your movie library!" 
     get_movies
     list_movies
@@ -69,7 +68,7 @@ class BestMovies::CLI
     puts "#{@@cyn}Actors: #{movie.actors}.#{@@white}"
     puts "#{@@grn}PLAY TRAILER?#{movie.play_trailer}(play)#{@@white}"
     puts "#{@@red}exit app?(exit)#{@@white}"
-    puts "input 'list' to list movies." 
+    puts "input #{@@mag}'list'#{@@white} to list movies." 
     menu
     
     #see the list of movies again
