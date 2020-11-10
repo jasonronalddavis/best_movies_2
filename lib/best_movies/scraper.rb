@@ -18,7 +18,7 @@ class BestMovies::Scraper
            movie.play_trailer = movie_attr.css(".article_movie_title a").attribute("href").text
            #binding.pry
            movie.name = movie_attr.search("div.article_movie_title a").text 
-           movie.actors = movie_attr.search("div.cast a").text 
+           movie.actors = movie_attr.search("div.cast a").text.split.join(", ")
            #self.scrape_synopsis(movie) 
            #self.scrape_genre(movie)
            #@@all << self
@@ -27,21 +27,12 @@ class BestMovies::Scraper
         end
 
 
-def self.scrape_synopsis(movie)   
+def self.scrape_details(movie)   
     doc = Nokogiri::HTML(open(movie.link))
     movie.synopsis = doc.css("#movieSynopsis").text.strip
-   # @@all << self
-end
-
-def self.scrape_genre(movie)   
-    doc = Nokogiri::HTML(open(movie.link))
     movie.genre = doc.css("div.meta-value.genre").text.gsub(/\s+/, " ").strip
-
    # @@all << self
 end
-
-
-
 end
     
 

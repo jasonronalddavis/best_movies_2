@@ -13,14 +13,6 @@ class BestMovies::Movie
         save
     end
 
-    def self.save_to_playlist
-        @@playlist << self
-    end
-
-    def playlist
-        @@playlist
-    end
-
 
     def save
 
@@ -31,7 +23,7 @@ class BestMovies::Movie
     def self.all   
        BestMovies::Scraper.scrape_movies
         @@all
-  # binding.pry
+ # binding.pry
         
 end
 end

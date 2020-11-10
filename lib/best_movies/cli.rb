@@ -30,31 +30,14 @@ class BestMovies::CLI
 
 
     def call
-    puts "\n#{@@grn}Welcome to your movie library!#{@@white}\n"
-    #puts "Welcome to your movie library!"
-    #puts "To list all of your movies, enter 'list movies'."
-    #puts "To list all of the actors in your library, enter 'list actors'."
-    #puts "To list all of the genres in your library, enter 'list genres'."
-    #puts "To list all of the movies by a particular actor, enter 'list_actor'."
-    #puts "To list all of the movies of a particular genre, enter 'list genre'."
-    #puts "To quit, type 'exit'."
-    #puts "What would you like to do?"
-    #find_movie_tile
-    #all_movie_titles
-    #fnd_movie
-    #find movie_by_actor
-    #find_actor_by_movie
-    #find_movie_by_genre
-    #slef context
-    #look for table or collection 
-    #api that does not require authentication 
+    puts "\n#{@@grn}Welcome!\n"
+    puts "List all movies or pick a genre?...#{@@white}"
+    #puts "Welcome to your movie library!" 
     get_movies
     list_movies
     get_user_movie 
     #valid_input?(input, data)
     end
-
-
 
     def get_movies     
         @movies = BestMovies::Movie.all
@@ -72,29 +55,55 @@ class BestMovies::CLI
     end
 
 
-   def get_user_movie
-    
+   def get_user_movie(input = nil)
+    if input == nil
    # binding.pry
     input = gets.strip.to_i - 1
+    end
     if valid_input(input, @movies)
     movie = @movies[input] 
-    BestMovies::Scraper.scrape_synopsis(movie)
-    BestMovies::Scraper.scrape_genre(movie)
+    BestMovies::Scraper.scrape_details(movie)
     puts "#{@@mag}#{movie.name}#{@@white}"
     puts "#{@@blu}genre: #{movie.genre}#{@@white}"
     puts "synopsis: #{movie.synopsis}"
     puts "#{@@cyn}Actors: #{movie.actors}.#{@@white}"
     puts "#{@@grn}PLAY TRAILER?#{movie.play_trailer}(play)#{@@white}"
-    puts "#{@@yllw}Save movie?(save)#{@@white}"
     puts "#{@@red}exit app?(exit)#{@@white}"
-    movie.play_trailer if input == "play"
-    movie.save_to_playlist if input == "save"
-    #exit_app if input == "exit"
-    get_user_movie 
+    puts "input 'list' to list movies." 
+    menu
+    
+    #see the list of movies again
+    #exit_app if input == "e
     #binding.pry
-   end 
+   #end 
+end
 end
 
+
+
+
+#save input steps for menu/get_movie
+
+def menu
+    input = gets.strip
+if input == "list"
+    list_movies
+    get_user_movie
+elsif input == "exit"
+exit
+elsif valid_input(input, @movies)
+    get_user_movie(input.to_i - 1)
+else 
+    puts "input invalid, please enter another"  
+    menu
+
+end
+end
+
+
+    #exit 
+    #see list again
+    #pick movie
 
 
 
@@ -102,11 +111,13 @@ end
  
 
 def valid_input(input, data)
-    data = @movies
  input.to_i <= data.length && input.to_i > 0 
- input.to_s != "save" || input.to_s != "exit" || input.to_s != "play"
+
 end
 end
+
+
+
 
 
 #def list_movies_for(chosen_input)
