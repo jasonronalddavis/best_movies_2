@@ -56,7 +56,35 @@ user types
 
 info of data structure
 
-ruby guide/make a gem using bundler
+
+
+
+GIT
+
+bundle gem
+
+bundle gem (new_gem)
+
+git status
+
+git add (file)
+
+git commit -m "first commit"
+
+git log #showws history
+
+* go to github
+
+* add new repository
+
+* git remote add origin (git link)
+
+# only on first push # git push -u origin #branch remote master #branch name
+
+
+
+
+ ruby guide/make a gem using bundler
 
 
 jasondavis@Jasons-iMac Best_movies % git remote set-url git@github.com:jasonronalddavis/best_movies_2.git
@@ -155,3 +183,9 @@ redux
 
 
 Rails framework built by ruby. 
+
+
+git i tracking software for keeping track of changes ton a project
+(conversion control)
+github is a place to store it
+

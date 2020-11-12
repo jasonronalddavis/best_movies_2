@@ -1,16 +1,25 @@
 class BestMovies::Movie
 
     @@all = []
-    @@playlist = []
-    attr_accessor :name, :genre, :synopsis, :link, :actors, :play_trailer
+    attr_accessor :name, :genre, :synopsis, :link, :actors
      
-    attr_reader :director
 
     def initialize
         @name = name
         @actors = []
         @genre = genre
         save
+    end
+
+
+
+
+    def genre=(genre)
+        @genre = genre 
+    end
+
+    def genre
+        @genre
     end
 
 

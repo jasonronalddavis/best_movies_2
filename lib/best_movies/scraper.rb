@@ -1,10 +1,5 @@
 class BestMovies::Scraper
 
-    attr_accessor :movie, :genre, :synopsis, :actor, :name
-
-
-    
-
 
 
     def self.scrape_movies
