@@ -43,3 +43,12 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the Best::Movies project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/<github username>/best-movies/blob/master/CODE_OF_CONDUCT.md).
+
+
+
+link to code license: https://github.com/jasonronalddavis/best_movies_2
+
+array = ["1", "2" ,"3", "4"]
+ array.select do |i|
+ puts i if i.to_i > 3
+end
