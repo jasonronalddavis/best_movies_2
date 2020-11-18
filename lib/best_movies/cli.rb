@@ -43,12 +43,11 @@ class BestMovies::CLI
     #instance variable hoists data to a higher scope to accessed outside a method within a class/instance
     end
 
-
    def list_movies
    puts "\n#{@@mag}CHOOSE A MOVIE!#{@@white}\n"
       # puts "choose a movie"
-    @movies.each.with_index(1) do |movie, index| 
-        puts "#{index}. #{movie.name}"
+    @movies.each.with_index(1) do |mov, index| 
+        puts "#{index}. #{mov.name}#{@@white}"
         end
        #binding.pry
     end
@@ -63,10 +62,11 @@ class BestMovies::CLI
     movie = @movies[input] 
     BestMovies::Scraper.scrape_details(movie)
     puts "#{@@mag}#{movie.name}#{@@white}"
+    puts "#{@@yllw}Director: #{movie.director}#{@@white}"
     puts "#{@@blu}genre: #{movie.genre}#{@@white}"
     puts "synopsis: #{movie.synopsis}"
     puts "#{@@cyn}Actors: #{movie.actors}.#{@@white}"
-    puts "#{@@grn}PLAY TRAILER?#{movie.play_trailer}(play)#{@@white}"
+    puts "#{@@grn}PLAY TRAILER? #{movie.play_trailer}#{@@white}"
     puts "#{@@red}exit app?(exit)#{@@white}"
     puts "input #{@@mag}'list'#{@@white} to list movies." 
     menu

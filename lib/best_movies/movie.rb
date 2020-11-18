@@ -1,7 +1,7 @@
 class BestMovies::Movie
 
     @@all = []
-    attr_accessor :name, :genre, :synopsis, :link, :actors
+    attr_accessor :name, :genre, :synopsis, :link, :actors, :play_trailer, :director
      
 
     def initialize
