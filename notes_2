@@ -15,3 +15,127 @@ movies.each do |r|
 puts r.css("a").text[--=
   
 end774
+
+
+
+
+class Movie
+
+
+class Movie
+    
+    @@all = ["BARNES", "RAGE", "MUH"]
+    attr_accessor :name, :genre, :synopsis, :link, :actors, :play_trailer, :director
+     
+
+    def initialize
+        @name = name
+        @actors = []
+        @genre = genre
+        @@all << self.new.name
+     end
+    
+    
+
+    def self.all
+     puts @@all
+    end
+    end
+
+
+
+    In Ruby, a method provides functionality to an Object. 
+    A class method provides functionality to a class itself, 
+    while an instance method provides functionality to one instance of a class.
+
+
+    array = ["1", "4", 3, "J", "e"]
+    
+    array.count => 5
+    
+    array.count(2) 
+    => 0 #Return count of elements equal to value
+
+
+    (1..5).to_a
+    => [1, 2, 3, 4, 5]
+
+
+    array.collect do |x|
+   puts "#{x} Barnes!"
+   end
+
+
+   array.each_with_index {|item, index| puts "Number #{index + 1} in line is #{item}"}
+
+
+words = %w[first second third fourth fifth sixth]
+=> ["first", "second", "third", "fourth", "fifth", "sixth"]
+
+Iterates the given block for each array of consecutive elements. 
+
+(1..10).each_cons(3) { |a| p a }
+# outputs below
+[1, 2, 3]
+[2, 3, 4]
+[3, 4, 5]
+[4, 5, 6]
+[5, 6, 7]
+[6, 7, 8]
+[7, 8, 9]
+[8, 9, 10]
+
+
+array.each_cons(3) { |a| p a }
+["1", "4", 3]
+["4", 3, "J"]
+[3, "J", "e"]
+ => nil 
+
+
+array.each_slice(3) {|a| p a}
+["1", "4", 3]
+["J", "e"]
+ => nil 
+
+
+.select returns array of all elements where block returns true
+
+list = [1, 4, 6, 5, 6, 7]
+
+list.each_cons(3) { |a| p a }
+
+[1, 4, 6]
+[4, 6, 5]
+[6, 5, 6]
+[5, 6, 7]
+[6, 7, 6]
+ => nil 
+
+
+def method(arg)
+     array = []
+    arg.each do |element|
+      array << element
+      array.shift     if array.size > n
+      yield array.dup if array.size == n
+    end
+
+
+array.each_cons(3).any? { |a, b, c| a == c }
+=> false
+each_cons to check if a character is surrounded by the same character,
+
+   .chars.each_cons(3).any? { |a,b,c| a == c }
+
+
+array.select { |x| x == "j" || x.to_i > 1}
+
+=> ["4", 3] 
+returns all elements for which the block returns TRUE in a new array
+
+
+array.detect { |x| x == "j" || x.to_i > 1}
+
+Detect/find returns the first item in the list for which the block returns TRUE
+ => "4"

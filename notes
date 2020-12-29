@@ -189,3 +189,49 @@ git i tracking software for keeping track of changes ton a project
 (conversion control)
 github is a place to store it
 
+
+study index
+
+study self
+
+
+
+detect/find returns a single element not an array
+returns the first value that evaluates to true
+
+select returns an array loops through the entire list returns an array.
+
+
+
+
+cats = [1, 3, 6, A, b, t, r, Y, D, F, F, ]
+
+class AlphaNumero
+
+test = "Jtbt7cfd1lrmgwj"
+chars =  test.split("")
+counter = chars.select do |e| e.downcase
+print counter.count(e) > 1
+end
+
+
+test = "Jtbt7cfd1lrmgwj"
+counter = test.downcase.split("")
+count = counter.select{|e| counter.count(e) > 1}
+print count.count
+
+
+
+
+
+def counter(str)
+splitter = str.split("")
+print (0...splitter.size).step(2).each_with_index |i, index| 
+splitter.values_at(i, i.next).join
+index = "_" if index == nil
+end
+
+str = "Jtbt7"
+print counter(str)
+
+

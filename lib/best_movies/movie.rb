@@ -34,5 +34,5 @@ class BestMovies::Movie
         @@all
  # binding.pry
         
-end
+    end
 end

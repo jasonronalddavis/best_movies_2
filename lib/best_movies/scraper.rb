@@ -17,21 +17,23 @@ class BestMovies::Scraper
            movie.actors = movie_attr.search("div.cast a").text.split.join(", ")
            movie.director = movie_attr.css("div.director a").text
            #self.scrape_synopsis(movie) 
-           #self.scrape_genre(movie)
            #@@all << self
             end   
                
-        end
+    end
   
-   
 
+    def self.scrape_genre(movie)
+        @doc = Nokogiri::HTML(open(movie.link))
+        movie.genre = @doc.css("div.meta-value.genre").text.gsub(/\s+/, " ").strip  
+       end
 
-def self.scrape_details(movie)   
-    @doc = Nokogiri::HTML(open(movie.link))
-    movie.synopsis = @doc.css("#movieSynopsis").text.strip
-    movie.genre = @doc.css("div.meta-value.genre").text.gsub(/\s+/, " ").strip
+    def self.scrape_details(movie)   
+        @doc = Nokogiri::HTML(open(movie.link))
+        movie.synopsis = @doc.css("#movieSynopsis").text.strip
+        movie.genre = @doc.css("div.meta-value.genre").text.gsub(/\s+/, " ").strip
    # @@all << self
-end
+    end
 end
 
 

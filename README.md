@@ -44,8 +44,3 @@ Everyone interacting in the Best::Movies project's codebases, issue trackers, ch
 
 
 link to code license: https://github.com/jasonronalddavis/best_movies_2
-
-array = ["1", "2" ,"3", "4"]
- array.select do |i|
- puts i if i.to_i > 3
-end

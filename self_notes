@@ -1,0 +1,74 @@
+class Movie
+    @@all = []
+    attr_accessor :name, :genre, :synopsis, :actors, :link, :play_trailer, :director, :actor
+
+    def initialize(name)
+        @name = name
+        @genre = genre
+        @@all << self.name
+        @actors = []
+     end
+    
+
+     def add_actor(actor)
+        self.actors << actor.name
+         self.actors
+     end
+  
+    
+
+    def self.all
+     puts @@all
+    end
+    end
+
+class Actor
+
+    attr_accessor :name, :genre
+@@all = []
+
+def initialize(name)
+        @name = name
+        @@all << self.name
+     end
+
+     def self.all
+      @@all
+    end
+
+    def self.expose
+      self
+    end
+  # puts self.inspect
+  end
+
+
+    grumble = Movie.new("Grumble")
+    Movie.all
+
+  dennis = Actor.new("Dennis")
+grumble.add_actor(dennis)
+  goods = Actor.new("Goods")
+ grumble.add_actor(goods)
+  speedy = Actor.new("Speedy")
+  grumble.add_actor(speedy)
+ print grumble.actors
+ print Actor.expose
+  print Actor.all
+
+
+
+  #refractor: 
+
+
+  class << self
+    def all
+      @@all
+    end
+
+
+    def expose
+
+      self
+    end
+  end

@@ -7,16 +7,16 @@ class BestMovies::CLI
 
 
     #bash color codes
-@@muted= "\e[1;31m"
-@@grn= "\e[1;32m"
-@@yllw= "\e[1;33m"
-@@blu= "\e[1;34m"  
-@@mag= "\e[1;35m"   
-@@cyn= "\e[1;36m"
-@@white= "\e[0m"
-@@red= "\e[0;31m"
-@@gray= "\e[0;37m"
-
+@@muted = "\e[1;31m"
+@@grn = "\e[1;32m"
+@@yllw = "\e[1;33m"
+@@blu = "\e[1;34m"  
+@@mag = "\e[1;35m"   
+@@cyn = "\e[1;36m"
+@@white = "\e[0m"
+@@red = "\e[0;31m"
+@@gray = "\e[0;37m"
+@@orange = "\e[0;33m"
 
 
 #def initialize
@@ -27,38 +27,45 @@ class BestMovies::CLI
 
 
 
-
-
     def call
-    puts "\n#{@@grn}Welcome!\n"
-    #puts "Welcome to your movie library!" 
+        puts ""
+        puts ""
+        puts "#{@@yllw}      ***********#{@@red}************* "
+        puts "#{@@red}     |                  #{@@grn}      |"
+        puts "#{@@cyn}     |#{@@white}     WELCOME!#{@@blu}           |"
+        puts "#{@@grn}     |                  #{@@yllw}      |"
+        puts "#{@@orange}      ***********#{@@mag}*************"
+        puts ""
+        puts ""        
     get_movies
     list_movies
     get_user_movie 
-    #valid_input?(input, data)
     end
 
     def get_movies     
         @movies = BestMovies::Movie.all
+       # binding.pry
     #instance variable hoists data to a higher scope to accessed outside a method within a class/instance
     end
+
+
 
    def list_movies
    puts "\n#{@@mag}CHOOSE A MOVIE!#{@@white}\n"
       # puts "choose a movie"
     @movies.each.with_index(1) do |mov, index| 
+        mov.genre = 
         puts "#{index}. #{mov.name}#{@@white}"
         end
-       #binding.pry
+      # binding.pry
     end
 
 
    def get_user_movie(input = nil)
     if input == nil
+    menu
    # binding.pry
-    input = gets.strip.to_i - 1
-    end
-    if valid_input(input, @movies)
+    elsif valid_input(input, @movies)
     movie = @movies[input] 
     BestMovies::Scraper.scrape_details(movie)
     puts "#{@@mag}#{movie.name}#{@@white}"
@@ -75,29 +82,29 @@ class BestMovies::CLI
     #exit_app if input == "e
     #binding.pry
    #end 
-end
-end
+    end
+    end
 
 
 
 
 #save input steps for menu/get_movie
 
-def menu
-    input = gets.strip
-if input == "list"
-    list_movies
-    get_user_movie
-elsif input == "exit"
-exit
-elsif valid_input(input, @movies)
-    get_user_movie(input.to_i - 1)
-else 
-    puts "input invalid, please enter another"  
-    menu
+    def menu
+        input = gets.strip
+    if input == "list"
+        list_movies
+        get_user_movie
+    elsif input == "exit"
+    exit
+    elsif valid_input(input, @movies)
+        get_user_movie(input.to_i - 1)
+    else 
+        puts "input invalid, please enter another"  
+        menu
 
-end
-end
+        end
+    end
 
 
     #exit 
@@ -105,14 +112,10 @@ end
     #pick movie
 
 
+    def valid_input(input, data)
+    input.to_i <= data.length && input.to_i > 0 
+    end 
 
-
- 
-
-def valid_input(input, data)
- input.to_i <= data.length && input.to_i > 0 
-
-end
 end
 
 

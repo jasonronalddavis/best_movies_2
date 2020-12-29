@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+
+#!/usr/bin/env ruby. ...uses the PATH to look up the location of the ruby executable. Because the path to the env executable is fully specified, this is a valid shebang line (which #! ruby is not)
+
 require_relative "../lib/best_movies.rb"
 
 BestMovies::CLI.new.call
+
+#As long as you explicitly call the filepath (adding the ./ in front of it) 
+#of your script from the command line, your computer will know it's a 
+#Ruby file and it will run automatically:
