@@ -8,9 +8,8 @@ class BestMovies::Movie
         @name = name
         @actors = []
         @genre = genre
-        save
+        self.save
     end
-
 
 
 
@@ -21,7 +20,7 @@ class BestMovies::Movie
 
 
     def self.all   
-       BestMovies::Scraper.scrape_movies
+       BestMovies::Scraper.scrape_movies if @@all.empty?
         @@all
  # binding.pry
         

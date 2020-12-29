@@ -51,13 +51,17 @@ class BestMovies::CLI
     #instance variable hoists data to a higher scope to accessed outside a method within a class/instance
     end
 
+    #return values
+
+    #sort
 
 
    def list_movies
    puts "\n#{@@mag}CHOOSE A MOVIE!#{@@white}\n"
       # puts "choose a movie"
-    @movies.each.with_index(1) do |mov, index| 
-        mov.genre = 
+    movie = @movies.sort_by{|movies| movies.name}
+    movie.each.with_index(1) do |mov, index| 
+
         puts "#{index}. #{mov.name}#{@@white}"
         end
       # binding.pry
