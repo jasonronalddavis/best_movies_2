@@ -23,7 +23,17 @@ class BestMovies::CLI
    #importer = BestMovies::Scraper
    #importer.scrape_movies
 #end
- def welcome       
+ 
+
+
+    def call
+    welcome         
+    get_movies
+    list_movies
+    get_user_movie 
+    end
+
+    def welcome       
         puts ""
         puts ""
         puts "#{@@yllw}      ***********#{@@red}************* "
@@ -34,14 +44,6 @@ class BestMovies::CLI
         puts ""
         puts ""
  end
-
-
-    def call
-    welcome         
-    get_movies
-    list_movies
-    get_user_movie 
-    end
 
     def get_movies     
         @movies = BestMovies::Movie.all
