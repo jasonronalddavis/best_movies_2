@@ -218,7 +218,7 @@ end
 test = "Jtbt7cfd1lrmgwj"
 counter = test.downcase.split("")
 count = counter.select{|e| counter.count(e) > 1}
-print count.count
+print count
 
 
 

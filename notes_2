@@ -139,3 +139,10 @@ array.detect { |x| x == "j" || x.to_i > 1}
 
 Detect/find returns the first item in the list for which the block returns TRUE
  => "4"
+
+
+
+ def barnes(rage)
+ rage.each {|m| "#{m}
+ puts "muhhhhh
+end
